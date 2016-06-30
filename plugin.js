@@ -1,7 +1,7 @@
 define(function (require) {
-    var basePath = "https://devd.io/";
+    var basePath = "https://raw.githubusercontent.com/herecommunity/mapillary-plugin-example/master/";
 
-    var WndPanelView = require("https://devd.io/panel.js");
+    var WndPanelView = require("https://raw.githubusercontent.com/herecommunity/mapillary-plugin-example/master/panel.js");
 
     var panel = new WndPanelView({
         closeCb: function () {
@@ -116,7 +116,7 @@ define(function (require) {
             }
         }
 
-    }
+    };
 
 
 
