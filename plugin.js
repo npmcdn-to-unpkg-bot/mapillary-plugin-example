@@ -1,7 +1,7 @@
 define(function (require) {
-    var basePath = "https://raw.githubusercontent.com/herecommunity/mapillary-plugin-example/master/";
+    var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
 
-    var WndPanelView = require("https://raw.githubusercontent.com/herecommunity/mapillary-plugin-example/master/panel.js");
+    var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
 
     var panel = new WndPanelView({
         closeCb: function () {
