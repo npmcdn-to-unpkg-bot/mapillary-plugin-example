@@ -32,16 +32,32 @@ define(function (require) {
                 navIcon: basePath + "eye.svg",
                 onShow: function () {
                     console.log("onShow Panel");
-                    panel.show();
-                    panel.onViewMoved(function (node) {
-                        that.showMarker(node.latLon.lat, node.latLon.lon, 0);
-                    });
+                    var sandwichMap = that.pI.sandwichMap();
+                    if (sandwichMap && sandwichMap.getZoomLevel() >= 16) {
+                        panel.show();
+                        panel.onViewMoved(function (node) {
+                            that.showMarker(node.latLon.lat, node.latLon.lon, 0);
+                        });
+
+
+                        if (sandwichMap) {
+                            sandwichMap.addObserver('zoomLevel', function (t, current, old) {
+                                if (current <= 17 && old > current) {
+                                    console.log("zoom hide!!");
+                                    panel.hide();
+                                    that.pI.closePanel();
+                                }
+                            })
+                        }
+                    }
+                    else {
+                        that.pI.closePanel();
+                    }
                 },
                 onHide: function () {
                     console.log("onHide Panel");
                     panel.hide();
-
-                    // that.pI.closePanel();
+                    that.pI.closePanel();
                 }
             });
 
@@ -66,10 +82,12 @@ define(function (require) {
         },
 
         updatePosition: function (hashmap) {
-            // debugger;
+
+            console.log(this.map);
+            this.showMarker(hashmap.coord.lat, hashmap.coord.lon, 0);
+
             // panel.show();
-            this.showMarker(hashmap.coord.latitude, hashmap.coord.longitude, 0);
-            panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
+            panel.viewCloseTo(hashmap.coord.lat, hashmap.coord.lon);
             console.log(hashmap);
         },
 
@@ -82,8 +100,7 @@ define(function (require) {
                     type: 'Feature',
                     geometry: {
                         type: 'Point', coordinates: [lon, lat,]
-                    },
-                    properties: {}
+                    }
                 }, [
                         // [0,{src:'icon.jpg',width:20,height:30,offsetX: -10,offsetY:10}]
                         [1, { width: 20, fill: '#00FF00', stroke: '#00FF00', rotation: 45 }],
@@ -95,8 +112,9 @@ define(function (require) {
             }
             else {
                 // debugger;
-                sandwichMap.getLayers(1).modifyFeatureCoordinates(this.marker, [lon, lat,]);
-                //this.marker
+                sandwichMap.getLayers(1).modifyFeatureCoordinates(
+                    this.marker, [lon, lat,]);
+                // this.marker
             }
         }
 
