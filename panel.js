@@ -44,7 +44,7 @@ define(function (require) {
             // this.wndView.show();
             this.$mapillary = this.wndView.getContentEl();
             this.$mapillary.prepend(mapillaryHtml);
-            this.mly = new Mapillary.Viewer("mly", "ZXlNWExWZ2dmQ1lJUlZPNTUyOXJxUTo5MzQyNWUzNDVkNWU5YzE2");
+            this.mly = new Mapillary.Viewer("mly", "ZXlNWExWZ2dmQ1lJUlZPNTUyOXJxUTo5MzQyNWUzNDVkNWU5YzE2","ytfE1_iD_N-jmHfTHkj1Ug");
 
             return this;
         },
