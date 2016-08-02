@@ -43,18 +43,18 @@ define(function (require) {
             this.wndView.render();
             // this.wndView.show();
             this.$mapillary = this.wndView.getContentEl();
+            this.$mapillary.prepend(mapillaryHtml);
+            this.mly = new Mapillary.Viewer("mly", "ZXlNWExWZ2dmQ1lJUlZPNTUyOXJxUTo5MzQyNWUzNDVkNWU5YzE2");
 
             return this;
         },
 
         show: function() {
-            this.$mapillary.prepend(mapillaryHtml);
-            this.mly = new Mapillary.Viewer("mly", "ZXlNWExWZ2dmQ1lJUlZPNTUyOXJxUTo5MzQyNWUzNDVkNWU5YzE2", "ytfE1_iD_N-jmHfTHkj1Ug");
             this.wndView.show();
         },
 
         hide: function() {
-            this.$mapillary.html("<h1>hello</h1>");
+            // this.$mapillary.html("<h1>hello</h1>");
             this.wndView.close();
         },
 
