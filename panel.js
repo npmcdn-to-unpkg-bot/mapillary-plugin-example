@@ -40,7 +40,6 @@ define(function (require) {
                     closeCb: this.options.closeCb
                 });
             this.wndView.render();
-            // this.wndView.show();
             this.$mapillary = this.wndView.getContentEl();
             this.$mapillary.prepend(mapillaryHtml);
             this.mly = new Mapillary.Viewer("mly", key, "ytfE1_iD_N-jmHfTHkj1Ug");
