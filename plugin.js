@@ -1,9 +1,9 @@
 define(function (require) {
-    var basePath = "https://devd.io/";
-    var WndPanelView = require("https://devd.io/panel.js");
+    // var basePath = "https://devd.io/";
+    // var WndPanelView = require("https://devd.io/panel.js");
 
-    // var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
-    // var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
+    var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
+    var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
 
     var panel;
 
