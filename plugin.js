@@ -5,9 +5,6 @@ define(function (require) {
     // var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
     // var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
 
-
-
-
     var panel;
 
     var plugin = {
@@ -20,10 +17,6 @@ define(function (require) {
             this.pI = pI;
             this.marker = null;
             
-            // debugger;
-
-            // window.pI = pI;
-
             panel = new WndPanelView({
                 closeCb: function () {
                     pI.closePanel();
@@ -45,8 +38,6 @@ define(function (require) {
                 onHide: function () {
                     console.log("onHide Panel");
                     panel.hide();
-
-                    // that.pI.closePanel();
                 }
             });
 
@@ -71,7 +62,6 @@ define(function (require) {
         },
 
         updatePosition: function (hashmap) {
-            // debugger;
             this.pI.openPanel();
             this.showMarker(hashmap.coord.latitude, hashmap.coord.longitude, 0);
             panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
@@ -99,9 +89,7 @@ define(function (require) {
                 console.log(this.marker);
             }
             else {
-                // debugger;
                 sandwichMap.getLayers(1).modifyFeatureCoordinates(this.marker, [lon, lat,]);
-                //this.marker
             }
         }
 
