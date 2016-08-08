@@ -1,22 +1,17 @@
 define(function (require) {
-    // var basePath = "https://devd.io/";
-    // var WndPanelView = require("https://devd.io/panel.js");
+    var basePath = "https://devd.io/";
+    var WndPanelView = require("https://devd.io/panel.js");
 
-    var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
-    var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
-
-    var panel = new WndPanelView({
-        closeCb: function () {
-            //what should happen after the wnd is destroyed
-        }.bind(this)
-    });
-    panel.render();
+    // var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
+    // var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
 
 
 
+
+    var panel;
 
     var plugin = {
-        init: function (pI) {
+        init: function (pI, data) {
 
             // setTimeout(function () {
             console.log("plugin init");
@@ -24,8 +19,18 @@ define(function (require) {
 
             this.pI = pI;
             this.marker = null;
+            
             // debugger;
-            window.pI = pI;
+
+            // window.pI = pI;
+
+            panel = new WndPanelView({
+                closeCb: function () {
+                    pI.closePanel();
+                }.bind(this)
+            });
+
+            panel.render(data.key);
 
             pI.createPanel({
                 title: "Mapillary",
@@ -67,7 +72,7 @@ define(function (require) {
 
         updatePosition: function (hashmap) {
             // debugger;
-            // panel.show();
+            this.pI.openPanel();
             this.showMarker(hashmap.coord.latitude, hashmap.coord.longitude, 0);
             panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
             console.log(hashmap);
