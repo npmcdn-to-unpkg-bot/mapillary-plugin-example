@@ -8,6 +8,6 @@
     "title" : "Mapillary Viewer plugin",
     "description" : "A simple plugin to allow browsing of Mapillary images in Map Creator",
     "data" : {
-        "something" : "for the plugin"
+        "key" : "key-for-mapillary-api"
     }
 }

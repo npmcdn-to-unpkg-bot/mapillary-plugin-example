@@ -14,21 +14,20 @@ define(function (require) {
       width: 100%;\
     }\
 </style>\
-<link href="https://npmcdn.com/mapillary-js@1.0.1/dist/mapillary-js.min.css" rel="stylesheet">\
+<link href="https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.css" rel="stylesheet">\
 <div class="mly-wrapper"><div id="mly"></div></div>';
 
     var Config = require('Config');
     var View = require('base/View'),
         WindowView = require('view/WindowView');
-    var Mapillary = require("https://npmcdn.com/mapillary-js@1.0.1/dist/mapillary-js.min.js");
+    var Mapillary = require("https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.js");
 
 
     var wndPanelView = View.extend({
 
-        render: function () {
-            $("#mapillary-panel").length == 0 && $('body').append('<div id="mapillary-panel"></div>');
+        render: function (key) {
+            $("#mapillary-panel").length == 0 && $('body').prepend('<div id="mapillary-panel"></div>');
             $("#mapillary-panel").html("");
-                    console.log(this.options);
 
             this.wndView = new WindowView(
                 {
@@ -41,10 +40,9 @@ define(function (require) {
                     closeCb: this.options.closeCb
                 });
             this.wndView.render();
-            // this.wndView.show();
             this.$mapillary = this.wndView.getContentEl();
             this.$mapillary.prepend(mapillaryHtml);
-            this.mly = new Mapillary.Viewer("mly", "ZXlNWExWZ2dmQ1lJUlZPNTUyOXJxUTo5MzQyNWUzNDVkNWU5YzE2","ytfE1_iD_N-jmHfTHkj1Ug");
+            this.mly = new Mapillary.Viewer("mly", key, "ytfE1_iD_N-jmHfTHkj1Ug");
 
             return this;
         },
@@ -54,13 +52,11 @@ define(function (require) {
         },
 
         hide: function() {
-            // this.$mapillary.html("<h1>hello</h1>");
             this.wndView.close();
         },
 
         mapillary: function() {
             if(!this.mly) return null;
-            
             return this.mly();
         },
 
