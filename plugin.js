@@ -14,7 +14,7 @@ define(function (require) {
 
             this.pI = pI;
             this.marker = null;
-            this.panel  = null;
+            this.panel = null;
 
 
             pI.createPanel({
@@ -23,20 +23,22 @@ define(function (require) {
                 onShow: function () {
                     console.log("onShow Panel");
 
-                    if(that.panel == null)
-                    {
+                    if (that.panel == null) {
                         that.panel = new WndPanelView({
                             closeCb: function () {
                                 pI.closePanel();
                             }.bind(this)
                         });
 
+
                         that.panel.render(data.key);
                         that.panel.startup();
+                        that.panel.show();
+                    }
+                    else {
+                        that.panel.show();
                     }
 
-                    that.panel.show();
-                    
                     that.panel.onViewMoved(function (node) {
                         that.showMarker(node.latLon.lat, node.latLon.lon, 0);
                     });
@@ -70,8 +72,7 @@ define(function (require) {
         updatePosition: function (hashmap) {
             this.pI.openPanel();
             this.showMarker(hashmap.coord.latitude, hashmap.coord.longitude, 0);
-            if(this.panel != null)
-            {
+            if (this.panel != null) {
                 this.panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
             }
         },

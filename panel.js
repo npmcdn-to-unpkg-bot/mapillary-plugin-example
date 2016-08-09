@@ -34,9 +34,7 @@ define(function (require) {
                     el: "#mapillary-panel",
                     className: "",
                     title: "Mapillary",
-                    withEffect: true,
                     cookie: "wnd-mapillary",
-                    position: { left: 140, width: 100, height: 100 },
                     closeCb: this.options.closeCb
                 });
             this.wndView.render();
