@@ -5,8 +5,6 @@ define(function (require) {
     var basePath = "https://herecommunity.github.io/mapillary-plugin-example/";
     var WndPanelView = require("https://herecommunity.github.io/mapillary-plugin-example/panel.js");
 
-    var panel;
-
     var plugin = {
         init: function (pI, data) {
 
@@ -16,28 +14,36 @@ define(function (require) {
 
             this.pI = pI;
             this.marker = null;
-            
-            panel = new WndPanelView({
-                closeCb: function () {
-                    pI.closePanel();
-                }.bind(this)
-            });
+            this.panel  = null;
 
-            panel.render(data.key);
 
             pI.createPanel({
                 title: "Mapillary",
                 navIcon: basePath + "eye.svg",
                 onShow: function () {
                     console.log("onShow Panel");
-                    panel.show();
-                    panel.onViewMoved(function (node) {
+
+                    if(that.panel == null)
+                    {
+                        that.panel = new WndPanelView({
+                            closeCb: function () {
+                                pI.closePanel();
+                            }.bind(this)
+                        });
+
+                        that.panel.render(data.key);
+                        that.panel.startup();
+                    }
+
+                    that.panel.show();
+                    
+                    that.panel.onViewMoved(function (node) {
                         that.showMarker(node.latLon.lat, node.latLon.lon, 0);
                     });
                 },
                 onHide: function () {
                     console.log("onHide Panel");
-                    panel.hide();
+                    that.panel.hide();
                 }
             });
 
@@ -64,8 +70,10 @@ define(function (require) {
         updatePosition: function (hashmap) {
             this.pI.openPanel();
             this.showMarker(hashmap.coord.latitude, hashmap.coord.longitude, 0);
-            panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
-            console.log(hashmap);
+            if(this.panel != null)
+            {
+                this.panel.viewCloseTo(hashmap.coord.latitude, hashmap.coord.longitude);
+            }
         },
 
         showMarker: function (lat, lon, heading) {

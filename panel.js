@@ -41,14 +41,18 @@ define(function (require) {
                 });
             this.wndView.render();
             this.$mapillary = this.wndView.getContentEl();
-            this.$mapillary.prepend(mapillaryHtml);
-            this.mly = new Mapillary.Viewer("mly", key, "ytfE1_iD_N-jmHfTHkj1Ug");
+            this.key = key;
 
             return this;
         },
 
+        startup: function() {
+            this.$mapillary.prepend(mapillaryHtml);
+            this.mly = new Mapillary.Viewer("mly", this.key, "ytfE1_iD_N-jmHfTHkj1Ug", { "cover":false });            
+        },
+
         show: function() {
-            this.wndView.show();
+            this.wndView.show();            
         },
 
         hide: function() {
