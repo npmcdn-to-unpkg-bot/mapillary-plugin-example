@@ -42,8 +42,6 @@ define(function (require) {
             this.wndView.render();
             this.$mapillary = this.wndView.getContentEl();
             this.key = key;
-            // this.$mapillary.prepend(mapillaryHtml);
-            // this.mly = new Mapillary.Viewer("mly", this.key, "ytfE1_iD_N-jmHfTHkj1Ug", { "cover":false });
 
             return this;
         },
