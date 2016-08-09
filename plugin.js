@@ -31,11 +31,9 @@ define(function (require) {
                         });
 
 
-                        // setTimeout(function () {
-                            that.panel.render(data.key);
-                            that.panel.startup();
-                            that.panel.show();
-                        // }, 1000);
+                        that.panel.render(data.key);
+                        that.panel.startup();
+                        that.panel.show();
                     }
                     else {
                         that.panel.show();
