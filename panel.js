@@ -64,6 +64,15 @@ define(function (require) {
 
         viewCloseTo: function(lat, lon) {
             if(!this.mly) return;
+
+            if((lat >= 6.7560000000000002 && lat <= 37.0769999999999982) &&
+               (lon >= 37.0769999999999982) && lon <= 97.3970000000000056)
+               {
+                   alert("Sorry, we can't show Mapillary in India");
+                   return;
+               }
+
+
             this.mly.moveCloseTo(lat, lon);
         },
 
