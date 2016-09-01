@@ -1,6 +1,6 @@
 
 define(function (require) {
-
+    // original css at https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.css
     var mapillaryHtml = '<style>\
     .mly-wrapper {\
       position: relative;\
@@ -14,7 +14,7 @@ define(function (require) {
       width: 100%;\
     }\
 </style>\
-<link href="https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.css" rel="stylesheet">\
+<link href="https://herecommunity.github.io/mapillary-plugin-example/mapillary.min.css" rel="stylesheet">\
 <div class="mly-wrapper"><div id="mly"></div></div>';
 
     var Config = require('Config');

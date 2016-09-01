@@ -4,7 +4,7 @@
     "realms" : {
         "LDMVyteJPDfiE4ibIp2V" : 1
     },
-    "url" : "https://raw.githubusercontent.com/herecommunity/mapillary-plugin-example/master/plugin.js",
+    "url" : "https://herecommunity.github.io/mapillary-plugin-example/plugin.js",
     "title" : "Mapillary Viewer plugin",
     "description" : "A simple plugin to allow browsing of Mapillary images in Map Creator",
     "data" : {
