@@ -11,13 +11,6 @@ define(function (require) {
             // setTimeout(function () {
             console.log("plugin init");
 
-            if( window.mapillaryPlugin == true)
-            {
-                console.log("Mapillary plugin double init guard.");
-                return;
-            }
-                
-            window.mapillaryPlugin = true;
             var that = this;
 
             this.pI = pI;
