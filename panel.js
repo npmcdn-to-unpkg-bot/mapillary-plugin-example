@@ -1,6 +1,6 @@
 
 define(function (require) {
-    // original css at https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.css
+    // original css at https://unpkg.com/mapillary-js@1.6.0/dist/mapillary-js.min.css
     var mapillaryHtml = '<style>\
     .mly-wrapper {\
       position: relative;\
@@ -20,7 +20,7 @@ define(function (require) {
     var Config = require('Config');
     var View = require('base/View'),
         WindowView = require('view/WindowView');
-    var Mapillary = require("https://npmcdn.com/mapillary-js@1.6.0/dist/mapillary-js.min.js");
+    var Mapillary = require("https://unpkg.com/mapillary-js@1.6.0/dist/mapillary-js.min.js");
 
 
     var wndPanelView = View.extend({
